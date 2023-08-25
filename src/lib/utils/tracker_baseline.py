@@ -3,7 +3,7 @@
 # Full text can be found in LICENSE.md
 
 import numpy as np
-from sklearn.utils.linear_assignment_ import linear_assignment
+import scipy.optimize.linear_sum_assignment
 from numba import jit
 import copy
 from filterpy.kalman import KalmanFilter
@@ -150,7 +150,7 @@ class Tracker_baseline(object):
         if self.opt.hungarian:
             item_score = np.array([det['score'] for det in dets], np.float32)  # N
             dist[dist > 1e18] = 1e18
-            matched_indices = linear_assignment(dist)
+            matched_indices = linear_sum_assignment(dist)
         else:
             matched_indices = greedy_assignment(copy.deepcopy(dist))
 
