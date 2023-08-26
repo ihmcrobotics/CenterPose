@@ -3,7 +3,7 @@
 # Full text can be found in LICENSE.md
 
 import numpy as np
-import scipy.optimize.linear_sum_assignment
+from scipy.optimize import linear_sum_assignment
 from numba import jit
 import copy
 from filterpy.kalman import KalmanFilter
